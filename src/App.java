@@ -1,10 +1,32 @@
-
+import controllers.MovieController;
 import models.Movie;
 
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("=== Evaluación: Ordenamiento de Películas por Título ===\n");
 
+        // Obtener lista de películas de ejemplo
+        Movie[] movies = generateMoviesList();
+
+        // Mostrar películas antes de ordenar
+        System.out.println("Películas ANTES de ordenar:");
+        printMovies(movies);
+
+        // Crear controlador e implementar el método sortByTitle
+        MovieController controller = new MovieController();
+
+        // Implementar el ordenamiento
+        try {
+            controller.sortByTitle(movies);
+
+            // Mostrar películas después de ordenar
+            System.out.println("\nPelículas DESPUÉS de ordenar por título:");
+            printMovies(movies);
+            System.out.println("\n Ordenamiento completado exitosamente.");
+        } catch (UnsupportedOperationException e) {
+            System.out.println("\n Error: El método sortByTitle aún no está implementado.");
+            System.out.println("Por favor, implementa el método en MovieController.java");
+        }
     }
 
     /**
